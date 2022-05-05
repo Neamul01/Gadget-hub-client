@@ -8,11 +8,16 @@ import NotFound from './components/Shared/NotFound/NotFound';
 import InventoryItem from './components/Home/InventoryItem/InventoryItem';
 import Login from './components/Login/Login/Login';
 import Signup from './components/Login/Signup/Signup';
+import AddItem from './components/AddItem/AddItem';
+import ManageItems from './components/ManageItems/ManageItems';
+import MyItems from './components/MyItems/MyItems';
 
 function App() {
   return (
-    <div className="App">
-      <Header></Header>
+    <div className="App relative">
+      <div className='sticky-md-top'>
+        <Header></Header>
+      </div>
       <Routes>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/' element={<Home></Home>}></Route>
@@ -20,6 +25,10 @@ function App() {
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/inventory' element={<Inventory></Inventory>}></Route>
         <Route path='/inventory/:id' element={<InventoryItem></InventoryItem>}></Route>
+
+        <Route path='/additem' element={<AddItem></AddItem>}></Route>
+        <Route path='/manageitems' element={<ManageItems></ManageItems>}></Route>
+        <Route path='/myitems' element={<MyItems></MyItems>}></Route>
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
