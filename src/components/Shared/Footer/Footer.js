@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <h2>All Right Reserve By &copy; Gadged Hub </h2>
+            <p><small>All Right Reserve By &copy; Gadged Hub </small></p>
         </div>
     );
 };
