@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Items = () => {
+    const id = 123114;
     return (
         <div className='mt-8 md:px-8 px-4 text-gray-900' >
             <h2 className='text-3xl font-bold mb-12 text-center'>Items</h2>
@@ -19,11 +21,14 @@ const Items = () => {
                             </div>
                             <p className=' text-left font-semibold'>Supplier : </p>
                             <div className="flex space-x-2 justify-center mt-4">
-                                <button type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <Link to={`/inventory/${id}`} className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+
+                                >Update</Link>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div className="flex justify-center md:mb-0 mb-4">
                     <div className="flex flex-col  md:max-w-xl rounded-lg bg-white shadow-lg">
                         <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="" />
