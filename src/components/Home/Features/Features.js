@@ -2,10 +2,8 @@ import React from 'react';
 
 const Features = () => {
     return (
-        // <!-- Container for demo purpose -->
         <div class="container my-24 px-6 mx-auto">
 
-            {/* <!-- Section: Design Block --> */}
             <section class="mb-32 text-gray-800">
                 <h2 class="text-3xl font-bold mb-12 text-center">Our Features</h2>
 
@@ -120,10 +118,8 @@ const Features = () => {
                     </div>
                 </div>
             </section>
-            {/* <!-- Section: Design Block --> */}
 
         </div>
-        // <!-- Container for demo purpose -->
     );
 };
 
