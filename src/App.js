@@ -11,6 +11,7 @@ import Signup from './components/Login/Signup/Signup';
 import AddItem from './components/AddItem/AddItem';
 import ManageItems from './components/ManageItems/ManageItems';
 import MyItems from './components/MyItems/MyItems';
+import ProtectedRoute from './components/Shared/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (
@@ -24,7 +25,11 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/inventory' element={<Inventory></Inventory>}></Route>
-        <Route path='/inventory/:id' element={<InventoryItem></InventoryItem>}></Route>
+        <Route path='/inventory/:id' element={
+          <ProtectedRoute>
+            <InventoryItem></InventoryItem>
+          </ProtectedRoute>
+        }></Route>
 
         <Route path='/additem' element={<AddItem></AddItem>}></Route>
         <Route path='/manageitems' element={<ManageItems></ManageItems>}></Route>
