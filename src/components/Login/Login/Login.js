@@ -1,16 +1,18 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
+    const { register, handleSubmit } = useForm();
     return (
         <div className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-lg dark:bg-gray-800 my-12">
             <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Login</h1>
 
             <form className="mt-6">
                 <div>
-                    <label htmlFor="username" className="block text-sm text-left text-gray-800 dark:text-gray-200">Username</label>
-                    <input type="text"
+                    <label htmlFor="email" className="block text-sm text-left text-gray-800 dark:text-gray-200">Email</label>
+                    <input type="text" {...register("email")}
                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                 </div>
 
@@ -20,7 +22,7 @@ const Login = () => {
                         <p className="text-xs text-gray-600 dark:text-gray-400 hover:underline cursor-pointer">Forget Password?</p>
                     </div>
 
-                    <input type="password"
+                    <input type="password" {...register("password")}
                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                 </div>
 
