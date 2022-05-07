@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [user] = useAuthState(auth);
 
     const onSubmit = data => {
         // console.log(data)
@@ -40,7 +43,7 @@ const AddItem = () => {
 
                         <div className="form-group mb-6 text-left">
                             <label htmlFor="email" className="form-label inline-block mb-2 text-gray-700">Email</label>
-                            <input {...register("email")} type="email" id='email' className="form-control block
+                            <input {...register("email")} type="email" value={user?.email} readOnly disabled id='email' className="form-control block
                                 w-full
                                 px-3
                                 py-1.5
