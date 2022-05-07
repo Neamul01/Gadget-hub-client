@@ -1,15 +1,44 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
-    const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        const email = data.email;
+        const password = data.password;
+        signInWithEmailAndPassword(email, password)
+    };
+
+    if (user) {
+        navigate(from, { replace: true })
+    }
+    if (loading) {
+        console.log('loading...')
+    }
+    if (error) {
+        console.log(error)
+    }
+
     return (
         <div className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-lg dark:bg-gray-800 my-12">
             <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Login</h1>
 
-            <form className="mt-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
                 <div>
                     <label htmlFor="email" className="block text-sm text-left text-gray-800 dark:text-gray-200">Email</label>
                     <input type="text" {...register("email")}

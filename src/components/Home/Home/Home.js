@@ -14,7 +14,6 @@ const Home = () => {
             .then(data => setItems(data.slice(0, 6)))
     }, [])
 
-    console.log(items)
     return (
         <div>
             {/*banner section */}

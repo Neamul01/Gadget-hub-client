@@ -7,12 +7,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Signup = () => {
     const { register, handleSubmit } = useForm();
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
@@ -22,7 +17,6 @@ const Signup = () => {
         const email = data.email;
         const pass = data.password;
         const confirmPass = data.confirmPassword;
-        console.log(data)
 
         if (pass === confirmPass) {
             createUserWithEmailAndPassword(email, pass)
