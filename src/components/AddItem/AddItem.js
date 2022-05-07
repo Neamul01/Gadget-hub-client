@@ -1,17 +1,23 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddItem = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
+        // const name = data.name;
+        // const email = data.email;
+        // const price = data.price;
+        // const quantity = data.quantity;
+        // const image = data.image;
+        // const supplier = data.supplier;
+        // const newItem = { name, email, price, quantity, supplier, image }
+        // console.log(newItem)
         console.log(data)
-        const name = data.name;
-        const email = data.email;
-        const price = data.price;
-        const quantity = data.quantity;
-        const image = data.image;
-        const supplier = data.supplier;
+        axios.post('http://localhost:5000/items', data)
+            .then(res => console.log(res))
+            .catch(error => console.error(error))
     };
 
     return (
