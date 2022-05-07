@@ -5,10 +5,21 @@ import { Link } from 'react-router-dom';
 const ManageItem = () => {
     const [items, setItems] = useState([]);
 
+
     useEffect(() => {
         axios.get(`http://localhost:5000/items`)
             .then(res => setItems(res.data))
     }, [])
+
+    const handleDeleteButton = id => {
+        console.log(id)
+        const confirm = window.confirm('are you sure you want to delete..?');
+        if (confirm) {
+            axios.delete(`http://localhost:5000/item?id=${id}`)
+                .then(res => console.log(res))
+                .catch(error => console.log(error))
+        }
+    }
 
     return (
         <div className='my-12 md:px-20 px-4 w-full'>
@@ -50,7 +61,7 @@ const ManageItem = () => {
                                             </td>
                                             <td>
                                                 <span className="whitespace-nowrap">
-                                                    <button to={'additem'} className="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                                                    <button onClick={() => handleDeleteButton(item._id)} to={'additem'} className="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
                                                 </span>
                                             </td>
                                         </tr>)
