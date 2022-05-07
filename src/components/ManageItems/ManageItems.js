@@ -12,13 +12,23 @@ const ManageItem = () => {
     }, [])
 
     const handleDeleteButton = id => {
-        console.log(id)
         const confirm = window.confirm('are you sure you want to delete..?');
         if (confirm) {
             axios.delete(`http://localhost:5000/item?id=${id}`)
-                .then(res => console.log(res))
+                .then(res => {
+                    console.log(res.data.acknowledged)
+                    if (res.data.acknowledged === true) {
+                        updateUI(id)
+                    }
+                })
                 .catch(error => console.log(error))
         }
+    }
+
+    const updateUI = (id) => {
+        console.log(id)
+        const rest = items.filter(item => item._id !== id);
+        setItems(rest)
     }
 
     return (
