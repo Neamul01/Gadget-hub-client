@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 const InventoryItem = () => {
     const [item, setItem] = useState({});
     const { id } = useParams();
+    const [newQuantity, setnewQuantity] = useState()
 
     const { name, email, description, image, price, quantity, supplier } = item;
 
@@ -15,6 +16,14 @@ const InventoryItem = () => {
         //     .then(res => res.json())
         //     .then(data => console.log(data))
     }, [])
+
+    const handleDeliveredButton = async id => {
+        console.log(id)
+        const updateQuantity = quantity - 1;
+        setnewQuantity(updateQuantity);
+        await axios.post(`http://localhost:5000/items/${id}?newQuantity=${newQuantity}`)
+            .then(res => console.log(res))
+    }
 
     return (
         <div className="container my-24 px-6 mx-auto">
@@ -27,7 +36,7 @@ const InventoryItem = () => {
                                 className="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" />
                         </div>
                         <div className="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
-                            <div className="flex flex-col">
+                            <div className="flex flex-col overflow-hidden">
                                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                                         <div className="overflow-hidden">
@@ -90,7 +99,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {quantity}
+                                                            {newQuantity}
                                                         </td>
                                                     </tr>
 
@@ -134,6 +143,9 @@ const InventoryItem = () => {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div className="flex space-x-2 mt-3 ml-2">
+                                <button type="button" onClick={() => handleDeliveredButton(id)} className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delivered</button>
                             </div>
                         </div>
                     </div>
