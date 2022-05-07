@@ -6,15 +6,7 @@ const AddItem = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        // const name = data.name;
-        // const email = data.email;
-        // const price = data.price;
-        // const quantity = data.quantity;
-        // const image = data.image;
-        // const supplier = data.supplier;
-        // const newItem = { name, email, price, quantity, supplier, image }
-        // console.log(newItem)
-        console.log(data)
+        // console.log(data)
         axios.post('http://localhost:5000/items', data)
             .then(res => console.log(res))
             .catch(error => console.error(error))
@@ -22,7 +14,7 @@ const AddItem = () => {
 
     return (
         <div className='my-12'>
-            <h2 className="text-3xl font-semibold">Add Item</h2>
+            <h2 className="text-3xl font-semibold">Add a new Item</h2>
             <div className='flex justify-center my-4'>
                 <div className="block  p-6 rounded-lg shadow-lg bg-white max-w-md">
                     <form onSubmit={handleSubmit(onSubmit)}>

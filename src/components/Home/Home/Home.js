@@ -11,9 +11,10 @@ const Home = () => {
     useEffect(() => {
         fetch('http://localhost:5000/items')
             .then(res => res.json())
-            .then(data => setItems(data.slice(0, 5)))
+            .then(data => setItems(data.slice(0, 6)))
     }, [])
 
+    console.log(items)
     return (
         <div>
             {/*banner section */}
