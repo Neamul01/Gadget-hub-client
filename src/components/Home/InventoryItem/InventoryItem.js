@@ -11,7 +11,7 @@ const InventoryItem = () => {
     const { name, email, description, image, price, supplier } = item;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/items/${id}`)
+        axios.get(`https://gadget-hub-assignment-11.herokuapp.com/items/${id}`)
             .then(res => {
                 setItem(res.data)
                 setnewQuantity(res.data.quantity)
@@ -30,7 +30,7 @@ const InventoryItem = () => {
 
     const updateItemQuantity = async quantity => {
         let oldQuantity;
-        await axios.get(`http://localhost:5000/items/${id}`)
+        await axios.get(`https://gadget-hub-assignment-11.herokuapp.com/items/${id}`)
             .then(res => {
                 oldQuantity = res.data.quantity;
             })
@@ -39,7 +39,7 @@ const InventoryItem = () => {
         const updateQuantity = Number(oldQuantity) + quantity;
         setnewQuantity(updateQuantity)
 
-        await axios.post(`http://localhost:5000/items/${id}?newQuantity=${updateQuantity}`)
+        await axios.post(`https://gadget-hub-assignment-11.herokuapp.com/items/${id}?newQuantity=${updateQuantity}`)
             .then()
             .catch(error => console.log(error))
     }

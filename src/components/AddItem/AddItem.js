@@ -10,7 +10,7 @@ const AddItem = () => {
 
     const onSubmit = data => {
         console.log(data)
-        axios.post('http://localhost:5000/items', data)
+        axios.post('https://gadget-hub-assignment-11.herokuapp.com/items', data)
             .then(res => {
                 alert('data added')
             })

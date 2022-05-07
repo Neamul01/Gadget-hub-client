@@ -11,7 +11,7 @@ const MyItems = () => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/userItem?email=${email}`)
+                const res = await axios.get(`https://gadget-hub-assignment-11.herokuapp.com/userItem?email=${email}`)
                 setuserItem(res.data)
             }
             catch (error) {
@@ -25,7 +25,7 @@ const MyItems = () => {
     const handleDeleteButton = id => {
         const confirm = window.confirm('are you sure you want to delete..?');
         if (confirm) {
-            axios.delete(`http://localhost:5000/item?id=${id}`)
+            axios.delete(`https://gadget-hub-assignment-11.herokuapp.com/item?id=${id}`)
                 .then(res => {
                     if (res.data.acknowledged === true) {
                         updateUI(id)

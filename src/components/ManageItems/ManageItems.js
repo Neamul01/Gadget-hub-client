@@ -7,14 +7,14 @@ const ManageItem = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/items`)
+        axios.get(`https://gadget-hub-assignment-11.herokuapp.com/items`)
             .then(res => setItems(res.data))
     }, [])
 
     const handleDeleteButton = id => {
         const confirm = window.confirm('are you sure you want to delete..?');
         if (confirm) {
-            axios.delete(`http://localhost:5000/item?id=${id}`)
+            axios.delete(`https://gadget-hub-assignment-11.herokuapp.com/item?id=${id}`)
                 .then(res => {
                     if (res.data.acknowledged === true) {
                         updateUI(id)
@@ -62,7 +62,7 @@ const ManageItem = () => {
                                                 {item.name}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
-                                                {item.quantity}1
+                                                {item.quantity}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
                                                 {item.email}
