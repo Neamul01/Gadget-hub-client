@@ -6,6 +6,7 @@ const InventoryItem = () => {
     const [item, setItem] = useState({});
     const { id } = useParams();
     const [newQuantity, setnewQuantity] = useState();
+    const [restockQuantity, setrestockQuantity] = useState(0);
 
     const { name, email, description, image, price, supplier } = item;
 
@@ -28,10 +29,28 @@ const InventoryItem = () => {
             .catch(error => console.log(error));
 
         const updateQuantity = Number(oldQuantity) - 1;
-        console.log(updateQuantity)
         setnewQuantity(updateQuantity)
+
         await axios.post(`http://localhost:5000/items/${id}?newQuantity=${updateQuantity}`)
-            .then(res => console.log(res))
+            .then()
+            .catch(error => console.log(error))
+    }
+
+    const handleRestockButton = async id => {
+        // console.log(restockQuantity)
+        let oldQuantity;
+        await axios.get(`http://localhost:5000/items/${id}`)
+            .then(res => {
+                // console.log(res)
+                oldQuantity = res.data.quantity;
+            })
+            .catch(error => console.log(error));
+
+        const updateQuantity = Number(oldQuantity) + Number(restockQuantity);
+        setnewQuantity(updateQuantity)
+
+        await axios.post(`http://localhost:5000/items/${id}?newQuantity=${updateQuantity}`)
+            .then()
             .catch(error => console.log(error))
     }
 
@@ -162,16 +181,16 @@ const InventoryItem = () => {
                 </div>
 
                 <div className="flex justify-center w-full mt-8">
-                    <div className="mb-3 xl:w-96 w-full shadow-lg px-20 py-12">
+                    <div className="mb-3 xl:w-96 w-full shadow-slate-800 shadow-2xl px-20 py-12">
                         <label htmlFor="exampleFormControlInput1" className="form-label inline-block mb-2 text-3xl text-gray-900">Restock the Item </label>
                         <input
-                            type="number"
+                            type="number" onBlur={e => setrestockQuantity(e.target.value)}
                             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-500 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-gray-900 focus:outline-none"
                             id="exampleFormControlInput1"
                             placeholder="stock quantity"
                         />
                         <div className="flex space-x-2 mt-3">
-                            <button type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Restock</button>
+                            <button onClick={() => handleRestockButton(id)} type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Restock</button>
                         </div>
                     </div>
 
