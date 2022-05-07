@@ -9,8 +9,7 @@ const ManageItem = () => {
         axios.get(`http://localhost:5000/items`)
             .then(res => setItems(res.data))
     }, [])
-    // console.log(items)
-    // items?.map(item => console.log(item))
+
     return (
         <div className='my-12 md:px-20 px-4 w-full'>
             <h2 className='text-3xl text-center font-semibold my-12'>All Items</h2>
