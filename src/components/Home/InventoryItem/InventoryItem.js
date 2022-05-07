@@ -1,9 +1,21 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const InventoryItem = () => {
-    const { id } = useParams()
-    console.log(id)
+    const [item, setItem] = useState({});
+    const { id } = useParams();
+
+    const { name, email, description, image, price, quantity, supplier } = item;
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/items/${id}`)
+            .then(res => setItem(res.data))
+        // fetch(`http://localhost:5000/items/${id}`)
+        //     .then(res => res.json())
+        //     .then(data => console.log(data))
+    }, [])
+
     return (
         <div className="container my-24 px-6 mx-auto">
 
@@ -11,7 +23,7 @@ const InventoryItem = () => {
                 <div className="block rounded-lg shadow-lg bg-white">
                     <div className="flex flex-wrap items-center">
                         <div className="grow-0 shrink-0 basis-auto block lg:flex w-full lg:w-6/12 xl:w-4/12">
-                            <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/126.jpg" alt="Trendy Pants and Shoes"
+                            <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/126.jpg" alt="Product"
                                 className="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" />
                         </div>
                         <div className="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
@@ -42,7 +54,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            @mdo
+                                                            {name}
                                                         </td>
                                                     </tr>
 
@@ -54,7 +66,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            @mdo
+                                                            {description}
                                                         </td>
                                                     </tr>
 
@@ -66,7 +78,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            @fat
+                                                            {price}
                                                         </td>
                                                     </tr>
 
@@ -78,7 +90,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            @mdo
+                                                            {quantity}
                                                         </td>
                                                     </tr>
 
@@ -90,7 +102,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            @fat
+                                                            {supplier}
                                                         </td>
                                                     </tr>
 
@@ -108,13 +120,13 @@ const InventoryItem = () => {
 
                                                     <tr className="bg-white border-b">
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 w-3/12 whitespace-nowrap">
-                                                            Thornton
+                                                            Email
                                                         </td>
                                                         <td className="text-sm font-semibold text-gray-900 px-6 py-4 w-1/12 whitespace-nowrap">
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            @fat
+                                                            {email}
                                                         </td>
                                                     </tr>
                                                 </tbody>
