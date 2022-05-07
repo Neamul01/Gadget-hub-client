@@ -6,22 +6,33 @@ const InventoryItem = () => {
     const [item, setItem] = useState({});
     const { id } = useParams();
     const [newQuantity, setnewQuantity] = useState();
-    const [update, setUpdate] = useState();
 
-    const { name, email, description, image, price, quantity, supplier } = item;
+    const { name, email, description, image, price, supplier } = item;
 
     useEffect(() => {
         axios.get(`http://localhost:5000/items/${id}`)
-            .then(res => setItem(res.data))
+            .then(res => {
+                setItem(res.data)
+                setnewQuantity(res.data.quantity)
+            })
     }, [])
 
-    console.log(quantity)
+    // console.log(quantity)
     const handleDeliveredButton = async id => {
-        console.log(id)
-        // const updateQuantity = quantity;
-        // setnewQuantity(updateQuantity);
-        // await axios.post(`http://localhost:5000/items/${id}?newQuantity=${newQuantity}`)
-        //     .then(res => setUpdate(res.data.matchedCount))
+        let oldQuantity;
+        await axios.get(`http://localhost:5000/items/${id}`)
+            .then(res => {
+                // console.log(res)
+                oldQuantity = res.data.quantity;
+            })
+            .catch(error => console.log(error));
+
+        const updateQuantity = Number(oldQuantity) - 1;
+        console.log(updateQuantity)
+        setnewQuantity(updateQuantity)
+        await axios.post(`http://localhost:5000/items/${id}?newQuantity=${updateQuantity}`)
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
     }
 
     return (
@@ -98,7 +109,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {quantity}
+                                                            {newQuantity}
                                                         </td>
                                                     </tr>
 
