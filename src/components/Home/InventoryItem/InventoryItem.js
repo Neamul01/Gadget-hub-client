@@ -18,35 +18,25 @@ const InventoryItem = () => {
             })
     }, [])
 
-    // console.log(quantity)
+    // decrease quantity by one on clicked delivery button 
     const handleDeliveredButton = async id => {
-        let oldQuantity;
-        await axios.get(`http://localhost:5000/items/${id}`)
-            .then(res => {
-                // console.log(res)
-                oldQuantity = res.data.quantity;
-            })
-            .catch(error => console.log(error));
-
-        const updateQuantity = Number(oldQuantity) - 1;
-        setnewQuantity(updateQuantity)
-
-        await axios.post(`http://localhost:5000/items/${id}?newQuantity=${updateQuantity}`)
-            .then()
-            .catch(error => console.log(error))
+        updateItemQuantity(-1)
     }
 
-    const handleRestockButton = async id => {
-        // console.log(restockQuantity)
+    // increase quantity by giving number on clicked restock 
+    const handleRestockButton = () => {
+        updateItemQuantity(Number(restockQuantity))
+    }
+
+    const updateItemQuantity = async quantity => {
         let oldQuantity;
         await axios.get(`http://localhost:5000/items/${id}`)
             .then(res => {
-                // console.log(res)
                 oldQuantity = res.data.quantity;
             })
             .catch(error => console.log(error));
 
-        const updateQuantity = Number(oldQuantity) + Number(restockQuantity);
+        const updateQuantity = Number(oldQuantity) + quantity;
         setnewQuantity(updateQuantity)
 
         await axios.post(`http://localhost:5000/items/${id}?newQuantity=${updateQuantity}`)
