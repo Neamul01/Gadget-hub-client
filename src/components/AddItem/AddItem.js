@@ -9,9 +9,11 @@ const AddItem = () => {
     const [user] = useAuthState(auth);
 
     const onSubmit = data => {
-        // console.log(data)
+        console.log(data)
         axios.post('http://localhost:5000/items', data)
-            .then(res => console.log(res))
+            .then(res => {
+                alert('data added')
+            })
             .catch(error => console.error(error))
     };
 
@@ -23,7 +25,7 @@ const AddItem = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group mb-6 text-left">
                             <label htmlFor="name" className="form-label inline-block mb-2 text-gray-700">Name</label>
-                            <input {...register("name")} type="text" id='name' className="form-control block
+                            <input {...register("name")} required type="text" id='name' className="form-control block
                                 w-full
                                 px-3
                                 py-1.5
@@ -43,7 +45,7 @@ const AddItem = () => {
 
                         <div className="form-group mb-6 text-left">
                             <label htmlFor="email" className="form-label inline-block mb-2 text-gray-700">Email</label>
-                            <input {...register("email")} type="email" value={user?.email} readOnly disabled id='email' className="form-control block
+                            <input {...register("email")} type="email" value={user?.email} id='email' required className="form-control block
                                 w-full
                                 px-3
                                 py-1.5

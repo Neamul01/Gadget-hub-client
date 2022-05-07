@@ -8,7 +8,6 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const email = user?.email;
 
-    // console.log(user.email)
     useEffect(() => {
         const getUser = async () => {
             try {
@@ -76,11 +75,9 @@ const MyItems = () => {
                                                     {item.quantity}
                                                 </td>
                                                 <td className="text-sm text-left text-gray-900 font-light whitespace-nowrap">
-                                                    <span className="whitespace-nowrap">
-                                                        <button className="inline-block px-6 py-2.5 bg-yellow-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-yellow-700 hover:shadow-lg focus:bg-yellow-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-800 active:shadow-lg transition duration-150 ease-in-out">Cancel</button>
-                                                    </span>
-                                                    <span className="whitespace-nowrap ml-2">
-                                                        <button onClick={() => handleDeleteButton(item._id)} className="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+
+                                                    <span className="whitespace-nowrap ">
+                                                        <button onClick={() => handleDeleteButton(item._id)} className="inline-block px-6 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
                                                     </span>
                                                 </td>
                                             </tr>)

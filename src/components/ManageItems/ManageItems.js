@@ -65,7 +65,7 @@ const ManageItem = () => {
                                                 {item.quantity}1
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
-                                                {item.supplier}
+                                                {item.email}
                                             </td>
                                             <td>
                                                 <span className="whitespace-nowrap">
