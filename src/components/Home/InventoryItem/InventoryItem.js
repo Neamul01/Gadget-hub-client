@@ -5,24 +5,23 @@ import { Link, useParams } from 'react-router-dom';
 const InventoryItem = () => {
     const [item, setItem] = useState({});
     const { id } = useParams();
-    const [newQuantity, setnewQuantity] = useState()
+    const [newQuantity, setnewQuantity] = useState();
+    const [update, setUpdate] = useState();
 
     const { name, email, description, image, price, quantity, supplier } = item;
 
     useEffect(() => {
         axios.get(`http://localhost:5000/items/${id}`)
             .then(res => setItem(res.data))
-        // fetch(`http://localhost:5000/items/${id}`)
-        //     .then(res => res.json())
-        //     .then(data => console.log(data))
     }, [])
 
+    console.log(quantity)
     const handleDeliveredButton = async id => {
         console.log(id)
-        const updateQuantity = quantity - 1;
-        setnewQuantity(updateQuantity);
-        await axios.post(`http://localhost:5000/items/${id}?newQuantity=${newQuantity}`)
-            .then(res => console.log(res))
+        // const updateQuantity = quantity;
+        // setnewQuantity(updateQuantity);
+        // await axios.post(`http://localhost:5000/items/${id}?newQuantity=${newQuantity}`)
+        //     .then(res => setUpdate(res.data.matchedCount))
     }
 
     return (
@@ -99,7 +98,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {newQuantity}
+                                                            {quantity}
                                                         </td>
                                                     </tr>
 
