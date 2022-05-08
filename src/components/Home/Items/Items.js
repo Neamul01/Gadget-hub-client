@@ -2,16 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Items = ({ item }) => {
-    const { _id, name, price, quantity, supplier, description } = item;
+    const { _id, name, price, quantity, supplier, description, image } = item;
 
     return (
         <div className="flex justify-center md:mb-0 mb-4">
             <div className="flex flex-col md:max-w-xl rounded-lg bg-white shadow-lg p-4">
-                <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="" />
+                <img className=" w-full h-full md:h-full object-cover md:w-full rounded-t-lg md:rounded-md md:rounded-l-lg" src={image} alt="" />
                 <div className="px-4 py-6 flex flex-col justify-start">
                     <h5 className="text-gray-900 text-xl font-medium mb-2">{name}</h5>
                     <p className="text-gray-700 text-base mb-4 text-left">
-                        {`${description.slice(0, 170)} ......`}
+                        {`${description.slice(0, 150)} ......`}
                     </p>
                     <div className='flex justify-between text-left mt-4 font-semibold'>
                         <span>Price: {price}</span>
