@@ -1,13 +1,21 @@
-import React from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Signup = () => {
     const { register, handleSubmit } = useForm();
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
+        auth
+    );
+
+    const [gotEmail, setgotEmail] = useState('')
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
@@ -23,21 +31,34 @@ const Signup = () => {
         }
     }
 
+
+    const handleResetPass = async () => {
+        if (gotEmail) {
+            await sendPasswordResetEmail(gotEmail);
+            toast.success("Email send successfully...");
+        }
+        else {
+            toast.error('Please provide a email address...')
+        }
+    }
+
+
     if (user) {
         navigate(from, { replace: true })
     }
 
-    if (loading) {
-
+    if (loading || sending) {
+        return <Loading></Loading>
     }
 
-    if (error) {
-
+    if (error || resetError) {
+        return toast.error(error.message)
     }
 
 
     return (
         <div className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-lg dark:bg-gray-800 my-12">
+
             <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Sign Up</h1>
 
             <form className="mt-6" id='signupForm' onSubmit={handleSubmit(onSubmit)}>
@@ -49,24 +70,24 @@ const Signup = () => {
 
                 <div>
                     <label htmlFor="email" className="block text-sm text-left text-gray-800 dark:text-gray-200">Email</label>
-                    <input type="email" {...register("email")}
-                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input onKeyUp={(e) => setgotEmail(e.target.value)} type="email" {...register("email")}
+                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
                 </div>
 
                 <div className="mt-4">
                     <div className="flex items-center justify-between">
                         <label htmlFor="password" className="block text-sm text-gray-800 dark:text-gray-200">Password</label>
-                        <p className="text-xs text-gray-600 dark:text-gray-400 hover:underline cursor-pointer">Forget Password?</p>
+                        <p onClick={handleResetPass} className="text-xs text-gray-600 dark:text-gray-400 hover:underline cursor-pointer">Forget Password?</p>
                     </div>
 
                     <input type="password" {...register("password")}
-                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
                 </div>
 
                 <div>
                     <label htmlFor="confirmPassword" className="block text-sm text-left text-gray-800 dark:text-gray-200">Confirm Password</label>
                     <input type="password" {...register("confirmPassword")}
-                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
                 </div>
 
                 <div className="mt-6">

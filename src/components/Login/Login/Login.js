@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
@@ -28,9 +30,10 @@ const Login = () => {
         navigate(from, { replace: true })
     }
     if (loading) {
-        console.log('loading...')
+        <Loading></Loading>
     }
     if (error) {
+        toast.error(error.message)
         console.log(error)
     }
 

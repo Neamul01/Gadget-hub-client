@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import auth from '../../firebase.init'
+import Loading from '../Shared/Loading/Loading';
 
 const MyItems = () => {
     const [userItem, setuserItem] = useState([]);
-    const [user] = useAuthState(auth);
+    const [user, loading, error] = useAuthState(auth);
     const email = user?.email;
 
     useEffect(() => {
@@ -40,9 +42,19 @@ const MyItems = () => {
         setuserItem(rest)
     }
 
+    if (error) {
+        toast.error('Error while get user...')
+    }
+
     return (
         <div className='my-12 md:px-20 px-4 w-full'>
             <h2 className='text-3xl text-center font-semibold my-12'>My Items</h2>
+
+            {
+                loading &&
+                <Loading></Loading>
+            }
+
             <div className="flex flex-col">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -64,6 +76,7 @@ const MyItems = () => {
                                         </th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
 
                                     {

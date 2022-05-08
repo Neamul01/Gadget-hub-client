@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -17,10 +19,11 @@ const SocialLogin = () => {
 
     if (error) {
         console.log(error)
+        toast.error(error.message)
     }
 
     if (loading) {
-        console.log('loading...')
+        <Loading></Loading>
     }
 
     return (
