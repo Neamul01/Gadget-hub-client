@@ -38,9 +38,21 @@ function App() {
           </ProtectedRoute>
         }></Route>
 
-        <Route path='/additem' element={<AddItem></AddItem>}></Route>
-        <Route path='/manageitems' element={<ManageItems></ManageItems>}></Route>
-        <Route path='/myitems' element={<MyItems></MyItems>}></Route>
+        <Route path='/additem' element={
+          <ProtectedRoute>
+            <AddItem></AddItem>
+          </ProtectedRoute>
+        }></Route>
+        <Route path='/manageitems' element={
+          <ProtectedRoute>
+            <ManageItems></ManageItems>
+          </ProtectedRoute>
+        }></Route>
+        <Route path='/myitems' element={
+          <ProtectedRoute>
+            <MyItems></MyItems>
+          </ProtectedRoute>
+        }></Route>
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>

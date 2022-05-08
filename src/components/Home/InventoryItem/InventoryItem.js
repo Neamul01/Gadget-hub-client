@@ -8,8 +8,8 @@ const InventoryItem = () => {
     const [newQuantity, setnewQuantity] = useState();
     const [restockQuantity, setrestockQuantity] = useState(0);
 
-    const { name, email, description, image, price, supplier } = item;
-
+    const { name, email, description, image, price, supplier, sold } = item;
+    console.log(item)
     useEffect(() => {
         axios.get(`https://gadget-hub-assignment-11.herokuapp.com/items/${id}`)
             .then(res => {
@@ -142,7 +142,7 @@ const InventoryItem = () => {
                                                             :
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            @mdo
+                                                            {sold}
                                                         </td>
                                                     </tr>
 

@@ -1,15 +1,19 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import { Navigate, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../Loading/Loading';
 
 const ProtectedRoute = ({ children }) => {
     const [user, loading, error] = useAuthState(auth);
     const location = useLocation();
 
     if (loading) {
-        console.log('loading...')
-        return
+        return <Loading></Loading>
+    }
+    if (error) {
+        toast.error(error.message)
     }
 
     if (!user) {
