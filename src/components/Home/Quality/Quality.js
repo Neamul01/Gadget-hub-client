@@ -15,8 +15,7 @@ const Quality = () => {
                             <div className="px-6 py-12 md:px-12">
                                 <h2 className="text-3xl font-bold mb-6 pb-2">Our product Quality</h2>
                                 <p className="text-gray-500 mb-6 pb-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A soluta corporis
-                                    voluptate ab error quam dolores doloremque, quae consectetur.
+                                    We provide best Quality products to our customers. Our products are world standard.
                                 </p>
                                 <div className="flex flex-wrap mb-6">
                                     <div className="w-full lg:w-6/12 xl:w-4/12 mb-4">
@@ -74,10 +73,6 @@ const Quality = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <button type="button"
-                                    className="inline-block px-7 py-3 bg-gray-800 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">
-                                    Buy now
-                                </button>
                             </div>
                         </div>
                     </div>

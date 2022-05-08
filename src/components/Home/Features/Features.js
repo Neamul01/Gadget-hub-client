@@ -8,35 +8,6 @@ const Features = () => {
                 <h2 className="text-3xl font-bold mb-12 text-center">Our Features</h2>
 
                 <div className="flex flex-wrap items-center">
-                    <div className="grow-0 shrink-0 basis-auto w-full lg:w-5/12 mb-12 lg:mb-0 md:px-6">
-                        <div className="relative overflow-hidden bg-no-repeat bg-cover rounded-lg shadow-lg" data-mdb-ripple="true"
-                            data-mdb-ripple-color="light" style={{ backgrounPosition: "50%" }}>
-                            <img src="https://mdbootstrap.com/img/new/textures/full/98.jpg" className="w-full" />
-                            <a href="#!">
-                                <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
-                                    style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}>
-                                    <div className="flex justify-center items-center h-full">
-                                        <div className="px-6 py-12 md:px-12 text-white text-center">
-                                            <h3 className="text-2xl uppercase font-bold mb-6">
-                                                The future is <u style={{ color: "hsl(210, 12%, 80%)" }}>now</u>
-                                            </h3>
-                                            <p style={{ color: "hsl(210, 12 %, 80 %)" }}>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quia
-                                                laboriosam error consequuntur fugit, doloribus rerum, iure nesciunt amet
-                                                quidem veniam cupiditate hic fugiat dolore aperiam quisquam libero earum
-                                                quibusdam?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="relative overflow-hidden bg-no-repeat bg-cover">
-                                    <div
-                                        className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
-                                        style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
 
                     <div className="grow-0 shrink-0 basis-auto w-full lg:w-7/12 md:px-6">
                         <div className="flex mb-12">
@@ -114,6 +85,36 @@ const Features = () => {
                                     consectetur atque ipsum ab adipisci ullam aspernatur odio soluta, quisquam dolore
                                 </p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="grow-0 shrink-0 basis-auto w-full lg:w-5/12 mb-12 lg:mb-0 md:px-6">
+                        <div className="relative overflow-hidden bg-no-repeat bg-cover rounded-lg shadow-lg" data-mdb-ripple="true"
+                            data-mdb-ripple-color="light" style={{ backgrounPosition: "50%" }}>
+                            <img src="https://mdbootstrap.com/img/new/textures/full/98.jpg" className="w-full" alt='product' />
+                            <a href="#!">
+                                <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
+                                    style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}>
+                                    <div className="flex justify-center items-center h-full">
+                                        <div className="px-6 py-12 md:px-12 text-white text-center">
+                                            <h3 className="text-2xl uppercase font-bold mb-6">
+                                                The future is <u style={{ color: "hsl(210, 12%, 80%)" }}>now</u>
+                                            </h3>
+                                            <p style={{ color: "hsl(210, 12 %, 80 %)" }}>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quia
+                                                laboriosam error consequuntur fugit, doloribus rerum, iure nesciunt amet
+                                                quidem veniam cupiditate hic fugiat dolore aperiam quisquam libero earum
+                                                quibusdam?
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="relative overflow-hidden bg-no-repeat bg-cover">
+                                    <div
+                                        className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                        style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}></div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
