@@ -27,12 +27,15 @@ const Signup = () => {
 
         if (pass === confirmPass) {
             await createUserWithEmailAndPassword(email, pass);
-            await sendEmailVerification();
-            toast.success('Varify Email send.\n Please check your Inbox or Spam..')
         }
         else {
-            toast.error("Email and Confirm Email dosn't match")
+            return toast.error("Email and Confirm Email dosn't match")
         }
+        if (!error) {
+            await sendEmailVerification();
+            toast.success('Varify Email send.Please check your \n Inbox or Spam..')
+        }
+
     }
 
 
@@ -56,7 +59,7 @@ const Signup = () => {
     }
 
     if (error || resetError || varifyError) {
-        return toast.error(error.message)
+        toast.error(error.message)
     }
 
 
