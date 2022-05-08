@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import Loading from '../../Shared/Loading/Loading';
 import Banner from '../Banner/Banner';
 import Features from '../Features/Features';
 import Items from '../Items/Items';
@@ -7,11 +9,21 @@ import Quality from '../Quality/Quality';
 
 const Home = () => {
     const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetch('https://gadget-hub-assignment-11.herokuapp.com/items')
+        const fetchItem = fetch('https://gadget-hub-assignment-11.herokuapp.com/items')
             .then(res => res.json())
             .then(data => setItems(data.slice(0, 6)))
+        toast.promise(
+            fetchItem,
+            {
+                loading: setLoading(true),
+                success: setLoading(false),
+                error: <b>Could not load items....</b>,
+
+            }
+        );
     }, [])
 
     return (
@@ -19,6 +31,9 @@ const Home = () => {
             {/*banner section */}
             <Banner></Banner>
 
+            {
+                loading && <Loading></Loading>
+            }
             {/*Items section */}
             <div className='mt-8 md:px-8 px-4 text-gray-900' >
                 <h2 className='text-3xl font-bold mb-12 text-center'>Items</h2>
