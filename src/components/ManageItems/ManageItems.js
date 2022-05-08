@@ -40,13 +40,16 @@ const ManageItem = () => {
                                 <thead className="border-b">
                                     <tr>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Id
-                                        </th>
-                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Name
                                         </th>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Id
+                                        </th>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Quantity
+                                        </th>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Sold
                                         </th>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Supplier
@@ -57,12 +60,17 @@ const ManageItem = () => {
                                 <tbody>
                                     {
                                         items?.map(item => <tr key={item._id} className="border-b-2">
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-left text-gray-900">{item._id}</td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-left text-gray-900">
                                                 {item.name}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
+                                                {item._id}
+                                            </td>
+                                            <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
                                                 {item.quantity}
+                                            </td>
+                                            <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
+                                                {item?.sold}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 text-left whitespace-nowrap">
                                                 {item.email}

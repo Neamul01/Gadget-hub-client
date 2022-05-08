@@ -12,10 +12,17 @@ import ManageItems from './components/ManageItems/ManageItems';
 import MyItems from './components/MyItems/MyItems';
 import ProtectedRoute from './components/Shared/ProtectedRoute/ProtectedRoute';
 import Blogs from './components/Blogs/Blogs';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div className="App relative">
+      {/* toaster to show notifications */}
+      <Toaster
+        position="top-right"
+        reverseOrder={true}
+      />
+
       <div className='sticky-md-top'>
         <Header></Header>
       </div>

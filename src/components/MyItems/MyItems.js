@@ -59,6 +59,9 @@ const MyItems = () => {
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Quantity
                                         </th>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Sold
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,6 +77,9 @@ const MyItems = () => {
                                                 </td>
                                                 <td className="text-sm text-left text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {item.quantity}
+                                                </td>
+                                                <td className="text-sm text-left text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {item?.sold}
                                                 </td>
                                                 <td className="text-sm text-left text-gray-900 font-light whitespace-nowrap">
 

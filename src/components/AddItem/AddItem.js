@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
 
 const AddItem = () => {
@@ -9,14 +10,19 @@ const AddItem = () => {
     const [user] = useAuthState(auth);
 
     const onSubmit = data => {
-        console.log(data)
-        axios.post('https://gadget-hub-assignment-11.herokuapp.com/items', data)
+        const dataPost = axios.post('https://gadget-hub-assignment-11.herokuapp.com/items', data)
             .then(res => {
-                alert('data added')
+                // toast.success('Successfully Added..!!!')
             })
-            .catch(error => console.error(error))
-    };
+            .catch(error => console.error(error));
 
+        toast.promise(dataPost, {
+            loading: 'Loading',
+            success: 'Successfully Added..',
+            error: 'Error when Adding data...!!',
+        });
+
+    };
     return (
         <div className='my-12'>
             <h2 className="text-3xl font-semibold">Add a new Item</h2>
@@ -116,8 +122,8 @@ const AddItem = () => {
 
                             {/* sold field  */}
                             <div className="form-group mb-6 text-left">
-                                <label htmlFor="price" className="form-label inline-block mb-2 text-gray-700"> Price</label>
-                                <input  {...register("price")} type="number" id='price' className="form-control
+                                <label htmlFor="sold" className="form-label inline-block mb-2 text-gray-700"> Sold</label>
+                                <input  {...register("sold")} type="number" id='sold' className="form-control
                                     block
                                     w-full
                                     px-3
@@ -132,7 +138,7 @@ const AddItem = () => {
                                     ease-in-out
                                     m-0
                                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                    aria-describedby="emailHelp123" placeholder="Price" />
+                                    aria-describedby="emailHelp123" placeholder="Sold" />
                             </div>
                         </div>
 
