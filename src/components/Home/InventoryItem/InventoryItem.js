@@ -45,13 +45,13 @@ const InventoryItem = () => {
     }
 
     return (
-        <div className="container my-24 px-6 mx-auto">
-
+        <div className="container mb-24 mt-16 px-6 mx-auto">
             <section className="mb-32 text-gray-800 text-center md:text-left">
                 <div className="block rounded-lg shadow-lg bg-white">
+                    <h2 className="text-4xl font-semibold text-center mb-12">{name}</h2>
                     <div className="flex flex-wrap items-center">
                         <div className="grow-0 shrink-0 basis-auto block lg:flex w-full lg:w-6/12 xl:w-4/12">
-                            <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/126.jpg" alt="Product"
+                            <img src={image} alt="Product"
                                 className="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" />
                         </div>
                         <div className="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
