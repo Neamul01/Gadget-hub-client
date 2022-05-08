@@ -23,8 +23,7 @@ const Features = () => {
                             <div className="grow ml-4">
                                 <p className="font-bold mb-1">Support 24/7</p>
                                 <p className="text-gray-500">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil quisquam quibusdam
-                                    modi sapiente magni molestias pariatur facilis reprehenderit facere aliquam ex.
+                                    We provide 24 hour and 7 day in a week support to our customer. We provide all kind off support to customer that they can confirm a helpfull business.
                                 </p>
                             </div>
                         </div>
@@ -42,8 +41,7 @@ const Features = () => {
                             <div className="grow ml-4">
                                 <p className="font-bold mb-1">Safe and solid</p>
                                 <p className="text-gray-500">
-                                    Eum nostrum fugit numquam, voluptates veniam neque quibusdam ullam aspernatur odio
-                                    soluta, quisquam dolore animi mollitia a omnis praesentium, expedita nobis!
+                                    We have no hidden corns or no hidden fee or any kind of charge. Our transaction rule is state forward that anyone can understand. We have no hidden features.
                                 </p>
                             </div>
                         </div>
@@ -61,9 +59,7 @@ const Features = () => {
                             <div className="grow ml-4">
                                 <p className="font-bold mb-1">Extremely fast</p>
                                 <p className="text-gray-500">
-                                    Enim cupiditate, minus nulla dolor cumque iure eveniet facere ullam beatae hic
-                                    voluptatibus dolores exercitationem? Facilis debitis aspernatur amet nisi iure
-                                    eveniet facere?
+                                    Our product delivery and support is exteamly fast that will give you a comfort and next level of experience.
                                 </p>
                             </div>
                         </div>
@@ -81,8 +77,7 @@ const Features = () => {
                             <div className="grow ml-4">
                                 <p className="font-bold mb-1">Live analytics</p>
                                 <p className="text-gray-500">
-                                    Illum doloremque ea, blanditiis sed dolor laborum praesentium maxime sint,
-                                    consectetur atque ipsum ab adipisci ullam aspernatur odio soluta, quisquam dolore
+                                    We analyse customers data live so they can see their progress at a glance and enhance their business experience.
                                 </p>
                             </div>
                         </div>
@@ -101,10 +96,7 @@ const Features = () => {
                                                 The future is <u style={{ color: "hsl(210, 12%, 80%)" }}>now</u>
                                             </h3>
                                             <p style={{ color: "hsl(210, 12 %, 80 %)" }}>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quia
-                                                laboriosam error consequuntur fugit, doloribus rerum, iure nesciunt amet
-                                                quidem veniam cupiditate hic fugiat dolore aperiam quisquam libero earum
-                                                quibusdam?
+                                                We have best features that will satisfy customers and give next level of experience in business.
                                             </p>
                                         </div>
                                     </div>
