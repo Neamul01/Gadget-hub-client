@@ -66,10 +66,11 @@ const MyItems = () => {
                                     {
                                         userItem?.map(item =>
                                             <tr key={item._id} className="border-b-2">
-                                                <td className="px-6 text-left py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.name}
+                                                <td className="px-6 text-left py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                    {item._id}
                                                 </td>
                                                 <td className="text-sm text-left text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {item._id}
+                                                    {item.name}
                                                 </td>
                                                 <td className="text-sm text-left text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {item.quantity}
