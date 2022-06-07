@@ -21,14 +21,17 @@ In this site a user can add a product , see his/her products and also delete his
  - Sign in using social Media.
 
 
-### `Dependencies used in this site`
+### `Technologies used in this site`
+- React,
+- React Router
 - Firebase.
 - axios.
 - react-firebase-hooks.
 - react-hook-form.
+- Express.js
+- MongoDB
 - react-hot-toast.
 - react-router.
-
-### `CSS Framework used in this site`
 - Tailwind.
 - Tailwind-elements(for components).
+
