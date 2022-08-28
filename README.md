@@ -2,9 +2,10 @@
 
 This site is about a warehouse management company that supplys all kind of electronic and electric gadget and equipments.
 
-## Live link of this site
+## links of this site
 
-Here are the live link of this site [Gadget Hub](https://gadget-hub-2022.web.app/).
+### `The live link of this site` [Gadget Hub](https://gadget-hub-2022.web.app/).
+### `Server side code` [gadget-hub-server](https://github.com/Neamul01/gadget-hub-server)
 
 ## Little About This Site
 
