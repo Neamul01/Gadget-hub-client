@@ -37,7 +37,7 @@ const Home = () => {
             {/*Items section */}
             <div className='mt-8 md:px-8 px-4 text-gray-900' >
                 <h2 className='text-3xl font-bold mb-12 text-center'>Items</h2>
-                <div className='md:grid lg:grid-cols-3 md:grid-cols-2 gap-x-12 gap-y-16 mb-8  p-8'>
+                <div className='md:grid lg:grid-cols-4 md:grid-cols-2 gap-x-6 gap-y-16 mb-8  p-2'>
 
                     {/* Single Item */}
                     {
