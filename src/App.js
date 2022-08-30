@@ -23,7 +23,7 @@ function App() {
         reverseOrder={true}
       />
 
-      <div /*className='sticky-md-top'*/>
+      <div className='sticky-md-top'>
         <Header></Header>
       </div>
       <Routes>

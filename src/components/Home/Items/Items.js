@@ -7,7 +7,9 @@ const Items = ({ item }) => {
     return (
         <div className="flex justify-center md:mb-0 mb-4">
             <div className="flex flex-col md:max-w-sm rounded-lg bg-white shadow-lg p-4">
-                <img className=" w-full h-full md:h-full md:max-h-72 object-cover md:w-full rounded-t-lg md:rounded-md md:rounded-l-lg" src={image} alt="" />
+                <div className="max-h-72 w-full">
+                    <img className="w-full h-full object-cover rounded-t-lg md:rounded-md md:rounded-l-lg" src={image} alt="" />
+                </div>
                 <div className="px-4 pt-4 flex flex-col justify-start">
                     <h5 className="text-gray-900 text-xl font-medium mb-0">{name}</h5>
                     <p className="text-gray-700 text-sm mb-0 text-left">
