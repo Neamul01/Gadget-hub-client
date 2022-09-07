@@ -1,9 +1,9 @@
 import axios from "axios";
 
 
-const client = axios.create({ baseURL: 'https://gadget-hub-assignment-11.herokuapp.com' });
+const client = axios.create({ baseURL: 'http://localhost:3000' });
 
-export const request = ({ ...options }) => {
+const request = ({ ...options }) => {
     client.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
     const onSuccess = response => response.data;
     const onError = error => {
@@ -13,3 +13,4 @@ export const request = ({ ...options }) => {
     }
     return client(options).then(onSuccess).catch(onError);
 }
+export default request;
