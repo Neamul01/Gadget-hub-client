@@ -9,7 +9,7 @@ export const useToken = (user) => {
         const currentUser = { email: email };
         // console.log(user.user.email)
         email &&
-            request({ url: `http://localhost:5000/user/${email}`, method: 'put', data: currentUser })
+            request({ url: `/user/${email}`, method: 'put', data: currentUser })
                 .then(data => {
                     localStorage.setItem('accessToken', data.token);
                     setToken(data.token);

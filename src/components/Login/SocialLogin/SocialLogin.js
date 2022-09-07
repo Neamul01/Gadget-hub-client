@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -15,9 +15,11 @@ const SocialLogin = () => {
 
     const from = location?.state?.from?.pathname || '/';
 
-    if (token) {
-        navigate(from, { replace: true })
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    }, [token, from, navigate])
 
     if (error) {
         console.log(error)

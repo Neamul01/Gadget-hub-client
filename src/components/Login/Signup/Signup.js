@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -51,11 +51,11 @@ const Signup = () => {
         }
     }
 
-
-    if (token) {
-        // console.log(user)
-        navigate(from, { replace: true })
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    }, [token, from, navigate])
 
     if (loading || sending || varifySending) {
         return <Loading></Loading>
